@@ -272,16 +272,14 @@
         // ЛОГИКА ОТКРЫТИЯ ИЛЛЮСТРАЦИЙ НА ВЕСЬ ЭКРАН
         const lightbox = document.getElementById('image-lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        // Выбираем все картинки только из галереи портфолио, исключая аватарку
         const galleryImages = document.querySelectorAll('.portfolio-grid img');
 
         galleryImages.forEach(img => {
-            // Добавляем стиль курсора-лупы, чтобы пользователь понимал, что клик сработает
             img.style.cursor = 'zoom-in';
             
             img.addEventListener('click', () => {
-                lightboxImg.src = img.src; // Передаем путь к картинке
-                lightbox.classList.add('active'); // Показываем оверлей
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
             });
         });
 
