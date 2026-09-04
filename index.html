@@ -44,6 +44,7 @@
                     <p class="update-date">Updated: 24.03.2026</p>
                 </section>
 
+
                 <section id="gallery" class="tab-content">
 
                     <div class="gallery-category">
@@ -180,60 +181,59 @@
 
                 </section>
 
-                <section id="info" class="tab-content">
-                    <div class="info-text">
-                        <h2 class="section-main-title">Basic order information</h2>
-                        <p class="info-intro">Please read the terms below carefully before contacting me or placing an order. Thanks!</p>
+               <section id="info" class="tab-content"> <div class="info-text">
+        <h2 class="section-main-title">Basic order information</h2>
+        <p class="info-intro">Please read the terms below carefully before contacting me or placing an order. Thanks!</p>
 
-                        <div class="info-container">
-                            <div class="info-card">
-                                <div class="info-card-header">
-                                    <span class="info-card-num">// 01</span>
-                                    <h4>Deadline</h4>
-                                </div>
-                                <div class="info-card-content">
-                                    <p>Current turnaround time is approximately <strong>~1 month</strong> depending on the complexity and queue placement.</p>
-                                </div>
-                            </div>
+        <div class="info-container">
+            <div class="info-card">
+                <div class="info-card-header">
+                    <span class="info-card-num">// 01</span>
+                    <h4>Deadline</h4>
+                </div>
+                <div class="info-card-content">
+                    <p>Current turnaround time is approximately <strong>~1 month</strong> depending on the complexity and queue placement.</p>
+                </div>
+            </div>
 
-                            <div class="info-card restrictions">
-                                <div class="info-card-header">
-                                    <span class="info-card-num">// 02</span>
-                                    <h4>Restrictions</h4>
-                                </div>
-                                <div class="info-card-content">
-                                    <ul>
-                                        <li><span class="info-cross">×</span> No NSFW</li>
-                                        <li><span class="info-cross">×</span> No Gore</li>
-                                        <li><span class="info-cross">×</span> No Scales / Complex and cryptic creatures</li>
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="info-card restrictions">
+                <div class="info-card-header">
+                    <span class="info-card-num">// 02</span>
+                    <h4>Restrictions</h4>
+                </div>
+                <div class="info-card-content">
+                    <ul>
+                        <li><span class="info-cross">×</span> No NSFW</li>
+                        <li><span class="info-cross">×</span> No Gore</li>
+                        <li><span class="info-cross">×</span> No Scales / Complex and cryptic creatures</li>
+                    </ul>
+                </div>
+            </div>
 
-                            <div class="info-card">
-                                <div class="info-card-header">
-                                    <span class="info-card-num">// 03</span>
-                                    <h4>Payment Methods</h4>
-                                </div>
-                                <div class="info-card-content">
-                                    <p>Accepted payments via: <span class="info-badge-inline">Sberbank</span> or <span class="info-badge-inline">PayPal</span>.</p>
-                                </div>
-                            </div>
+            <div class="info-card">
+                <div class="info-card-header">
+                    <span class="info-card-num">// 03</span>
+                    <h4>Payment Methods</h4>
+                </div>
+                <div class="info-card-content">
+                    <p>Accepted payments via: <span class="info-badge-inline">Sberbank</span> or <span class="info-badge-inline">PayPal</span>.</p>
+                </div>
+            </div>
 
-                            <div class="info-card highlighting">
-                                <div class="info-card-header">
-                                    <span class="info-card-num">// 04</span>
-                                    <h4>Workflow</h4>
-                                </div>
-                                <div class="info-card-content">
-                                    <p>Payment is required <strong>after the sketch is approved</strong> (for full-color pieces only).</p>
-                                    <p>I reserve the right to decline any commission without reason.</p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="info-card highlighting">
+                <div class="info-card-header">
+                    <span class="info-card-num">// 04</span>
+                    <h4>Workflow</h4>
+                </div>
+                <div class="info-card-content">
+                    <p>Payment is required <strong>after the sketch is approved</strong> (for full-color pieces only).</p>
+                    <p>I reserve the right to decline any commission without reason.</p>
+                </div>
+            </div>
+        </div>
 
-                    </div>
-                </section>
+    </div>
+</section>
             </div>
 
         </div>
@@ -256,8 +256,7 @@
             const targetBtn = document.querySelector(`[data-tab="${tabId}"]`);
             if (targetBtn) targetBtn.classList.add('active');
 
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) targetContent.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
 
             if (tabId !== 'profile') {
                 profileHeader.classList.add('hidden');
@@ -273,20 +272,23 @@
             });
         });
 
-        // Логика открытия иллюстраций на весь экран
+        // ЛОГИКА ОТКРЫТИЯ ИЛЛЮСТРАЦИЙ НА ВЕСЬ ЭКРАН
         const lightbox = document.getElementById('image-lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        // Выбираем все картинки только из галереи портфолио, исключая аватарку
         const galleryImages = document.querySelectorAll('.portfolio-grid img');
 
         galleryImages.forEach(img => {
+            // Добавляем стиль курсора-лупы, чтобы пользователь понимал, что клик сработает
             img.style.cursor = 'zoom-in';
-
+            
             img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('active');
+                lightboxImg.src = img.src; // Передаем путь к картинке
+                lightbox.classList.add('active'); // Показываем оверлей
             });
         });
 
+        // Закрытие при клике по любому месту подложки
         lightbox.addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
